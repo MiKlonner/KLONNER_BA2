@@ -155,6 +155,7 @@ public class UserTest {
                 "Paul", "Wagner",
                 "01.01.2000", "mi.fritz@gmail.com",
                 "meinPasswort1!", "ADMIN");
+        userDAO.save(user);
 
         boolean result;
         if(userDAO.findByFirstName("Paul").isEmpty()){
@@ -171,6 +172,7 @@ public class UserTest {
                 "Lea", "Schulz",
                 "01.01.2000", "mi.fritz@gmail.com",
                 "Hallo1!", "ADMIN");
+        userDAO.save(user);
 
         boolean result;
         if(userDAO.findByFirstName("Lea").isEmpty()){
@@ -183,14 +185,18 @@ public class UserTest {
     @Test
     @Order(8)
     public void testSaveWrongDateFormat() {
+
         assertThrows(IllegalArgumentException.class, () -> {
             new User("Hans", "Rechtberger", "01-01-2000", "mi.fritz@gmail.com", "Hallo123456!", "ADMIN");
         });
+
     }
 
     @Test
     @Order(9)
     public void testSaveWrongRole() {
+
+
         assertThrows(IllegalArgumentException.class, () -> {
             new User("Hans", "Rechtberger", "01.01.2000", "mi.fritz@gmail.com", "Hallo123456!", "ROLE");
         });
@@ -260,7 +266,7 @@ public class UserTest {
     @Order(16)
     public void testUpdateNonExistingUser() {
         assertThrows(IllegalArgumentException.class, () -> {
-        userDAO.updateUserByID(100, "Vorname","Hans-Peter");
+            userDAO.updateUserByID(100, "Vorname","Hans-Peter");
         });
     }
 
@@ -301,7 +307,7 @@ public class UserTest {
         } else{
             result = true;
         }
-    assertTrue(result, "Upload war Erfolgreich");
+        assertTrue(result, "Upload war Erfolgreich");
 
 
     }
@@ -322,7 +328,7 @@ public class UserTest {
             result = false;
         }
         assertTrue(result, "Upload war nicht erfolgreich. Es fehlt ein Attribut im Header");
-        }
+    }
 
     @Test
     @Order(22)
@@ -341,7 +347,7 @@ public class UserTest {
         }
         assertTrue(result, "Upload war nicht erfolgreich. Es fehlt ein Attribut");
     }
- }
+}
 
 
 
