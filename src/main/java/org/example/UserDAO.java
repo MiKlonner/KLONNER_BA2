@@ -16,7 +16,7 @@ public class UserDAO implements UserDAOInterface {
     public boolean save(User user) throws IllegalArgumentException {
 
 
-        return false;
+        return null;
     }
 
 
@@ -27,7 +27,7 @@ public class UserDAO implements UserDAOInterface {
 
     public boolean deleteUserbyID(int id) {
 
-        return false;
+        return null;
     }
 
     public List<String> uploadCSV(File file) throws RuntimeException {
