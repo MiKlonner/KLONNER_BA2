@@ -37,6 +37,26 @@ public class User {
 
 
     public User (String firstName, String surName, String dateOfBirth, String email, String password, String role) throws RuntimeException {
+        this.dateFormatter = new SimpleDateFormat("dd.MM.yyyy");
+        try {
+            this.dateOfBirth = dateFormatter.parse(dateOfBirth);
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("Bitte geben Sie das Geburtsdatum in folgendem FOrmat an:" + dateOfBirth.toString());
+        }
+        this.firstName = firstName;
+        this.surName = surName;
+        this.email = email;
+
+        this.password = password;
+
+        Role foundRole = Role.findByTitle(role);
+        if (foundRole == null) {
+            throw new IllegalArgumentException("Bitte geben Sie eine gültige Berechtigungsstufe an");
+        }
+        else{
+            this.role = (Role.findByTitle(role));
+        }
+
 
     }
 
