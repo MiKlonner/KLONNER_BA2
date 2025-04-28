@@ -139,16 +139,18 @@ public class UserDAO implements UserDAOInterface {
             boolean correctHeader = false;
             int countLine=0;
 
-
             //check if header is correct
             header = reader.readLine();
             countLine++;
             String[] headerDetails = header.split(",");
-            if(headerDetails[0].equalsIgnoreCase("Vorname")  && headerDetails[1].equalsIgnoreCase("Nachname")  && headerDetails[2].equalsIgnoreCase("Geburtsdatum")  && headerDetails[3].equalsIgnoreCase("Email")  && headerDetails[4].equalsIgnoreCase("Berechtigung") && headerDetails[5].equalsIgnoreCase("Passwort") ) {
+            if(headerDetails[0].equalsIgnoreCase("Vorname")
+                    && headerDetails[1].equalsIgnoreCase("Nachname")
+                    && headerDetails[2].equalsIgnoreCase("Geburtsdatum")
+                    && headerDetails[3].equalsIgnoreCase("Email")
+                    && headerDetails[4].equalsIgnoreCase("Berechtigung")
+                    && headerDetails[5].equalsIgnoreCase("Passwort") ) {
                 correctHeader = true;
             }
-
-
             //read all lines
             if(correctHeader){
                 while ((line = reader.readLine()) != null) {
@@ -222,7 +224,7 @@ public class UserDAO implements UserDAOInterface {
                 }
             }
             else {
-                errorMessages.add("Bitte geben Sie die Parameter in folgender Reiohenfolge an: Vorname,Nachname,Geburtsdatum,Email,Berechtigung,Passwort");
+                errorMessages.add("Bitte geben Sie die Parameter in folgender Reihenfolge an: Vorname,Nachname,Geburtsdatum,Email,Berechtigung,Passwort");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
