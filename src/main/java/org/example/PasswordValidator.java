@@ -16,28 +16,20 @@ public class PasswordValidator {
         boolean hasDigit = false;
         char character=' ';
         if((password.length() < minLength)){
-            return false;
-        }
+            return false;}
         if((exclude.contains(password))){
-            return false;
-        }
+            return false;}
         for(int i=0; i< password.length();i++){
             character = password.charAt(i);
             if(Character.isUpperCase(character)){
-                hasUpperCase = true;
-            }
+                hasUpperCase = true;}
             if(Character.isDigit(character)){
-                hasDigit = true;
-            }
+                hasDigit = true;}
             if(!Character.isDigit(character) && !Character.isLetter(character) && !Character.isSpace(character)){
-                hasSpecialCharakter = true;
-            }
+                hasSpecialCharakter = true;}
         }
-
         if(hasUpperCase && hasDigit && hasSpecialCharakter){
-            valid = true;
-        }
+            valid = true;}
         return valid;
     }
-
 }

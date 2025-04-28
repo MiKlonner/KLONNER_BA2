@@ -56,8 +56,6 @@ public class User {
         else{
             this.role = (Role.findByTitle(role));
         }
-
-
     }
 
 

@@ -38,9 +38,7 @@ public class UserDAO implements UserDAOInterface {
         } finally {
             entityManager.close();
         }
-
     }
-
     private static boolean ifUserExists(User user) {
         EntityManager em = getEntityManager();
 
@@ -93,7 +91,8 @@ public class UserDAO implements UserDAOInterface {
                     user.setPassword(value);
                     break;
                 default:
-                    throw new IllegalArgumentException("Das angegebene Attribut existiert nicht. Folgende Attribute sind möglich: Vorname, Nachname, email, Geburtsdatum, Berechtigung.");
+                    throw new IllegalArgumentException("Das angegebene Attribut existiert nicht. " +
+                            "Folgende Attribute sind möglich: Vorname, Nachname, email, Geburtsdatum, Berechtigung.");
             }
             transaction.begin();
             User newUser = em.merge(user);
